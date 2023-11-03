@@ -115,7 +115,7 @@ class DoctrineParser implements DoctrineParserInterface
     /**
      * @throws InvalidClassNameException|FieldMappingException|MissingAssociationClassException
      */
-    final private function validate()
+    private function validate()
     {
         $this->validateClass($this->className);
         $this->validateFieldsToProperties($this->fieldsToProperties, $this->fieldPrefixesToClasses);
@@ -133,7 +133,7 @@ class DoctrineParser implements DoctrineParserInterface
      *
      * @throws InvalidClassNameException|FieldMappingException|MissingAssociationClassException
      */
-    final private function validateFieldsToProperties(array $fieldsToProperties, array $fieldPrefixesToClasses)
+    private function validateFieldsToProperties(array $fieldsToProperties, array $fieldPrefixesToClasses)
     {
         // check $fieldsToProperties
         foreach ($fieldsToProperties as $queryBuilderField => $property) {
@@ -158,7 +158,7 @@ class DoctrineParser implements DoctrineParserInterface
      *
      * @throws InvalidClassNameException|FieldMappingException|MissingAssociationClassException
      */
-    final private function validateFieldPrefixesToClasses(array $fieldPrefixesToClasses)
+    private function validateFieldPrefixesToClasses(array $fieldPrefixesToClasses)
     {
         // validate fieldPrefixesToClasses
         foreach ($fieldPrefixesToClasses as $fieldPrefix => $associationClass) {
@@ -190,7 +190,7 @@ class DoctrineParser implements DoctrineParserInterface
      * @param array $embeddableFieldPrefixesToClasses
      * @param array $embeddableFieldPrefixesToEmbeddableClasses
      */
-    final private function validateEmbeddableFieldPrefixes(array $embeddableFieldPrefixesToClasses, array $embeddableFieldPrefixesToEmbeddableClasses)
+    private function validateEmbeddableFieldPrefixes(array $embeddableFieldPrefixesToClasses, array $embeddableFieldPrefixesToEmbeddableClasses)
     {
         $prefixes = array_keys($embeddableFieldPrefixesToClasses);
 
@@ -213,7 +213,7 @@ class DoctrineParser implements DoctrineParserInterface
      *
      * @throws InvalidClassNameException
      */
-    final private function validateClass(string $className)
+    private function validateClass(string $className)
     {
         if (!class_exists($className)) {
             throw new InvalidClassNameException(sprintf(
@@ -232,7 +232,7 @@ class DoctrineParser implements DoctrineParserInterface
      *
      * @throws FieldMappingException
      */
-    final private function validateClassHasProperty(string $className, string $classProperty)
+    private function validateClassHasProperty(string $className, string $classProperty)
     {
         $propertyInfo = new PropertyInfoExtractor([new ReflectionExtractor()]);
         $properties = $propertyInfo->getProperties($className);
@@ -252,7 +252,7 @@ class DoctrineParser implements DoctrineParserInterface
      *
      * @throws MissingAssociationClassException
      */
-    final private function validateFieldPrefixIsInAssociations(string $fieldPrefix, array $fieldPrefixesToClasses)
+    private function validateFieldPrefixIsInAssociations(string $fieldPrefix, array $fieldPrefixesToClasses)
     {
         if (!array_key_exists($fieldPrefix, $fieldPrefixesToClasses)) {
             throw new MissingAssociationClassException(sprintf(
