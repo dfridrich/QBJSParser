@@ -4,7 +4,7 @@ namespace FL\QBJSParser\Parser\Doctrine;
 
 abstract class JoinPartialParser
 {
-    final private function __construct()
+    private function __construct()
     {
     }
 

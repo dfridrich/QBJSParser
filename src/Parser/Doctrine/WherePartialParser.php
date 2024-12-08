@@ -28,7 +28,7 @@ abstract class WherePartialParser
     /**
      * @codeCoverageIgnore
      */
-    final private function __construct()
+    private function __construct()
     {
     }
 
@@ -77,7 +77,7 @@ abstract class WherePartialParser
      * @param string|null        $prepend
      * @param string|null        $append
      */
-    final private static function parseRuleGroup(RuleGroupInterface $ruleGroup, string $prepend = null, string $append = null)
+    private static function parseRuleGroup(RuleGroupInterface $ruleGroup, string $prepend = null, string $append = null)
     {
         static::$dqlPartialWhereString .= $prepend ?? '';
         $iteration = 0;
@@ -120,7 +120,7 @@ abstract class WherePartialParser
      * @param string|null   $prepend
      * @param string|null   $append
      */
-    final private static function parseRule(RuleInterface $rule, string $prepend = null, string $append = null)
+    private static function parseRule(RuleInterface $rule, string $prepend = null, string $append = null)
     {
         static::$dqlPartialWhereString .= $prepend ?? '';
 
@@ -156,7 +156,7 @@ abstract class WherePartialParser
      *
      * @return bool
      */
-    final private static function queryBuilderOperator_UsesValue(string $operator): bool
+    private static function queryBuilderOperator_UsesValue(string $operator): bool
     {
         return in_array($operator, [
             'equal', 'not_equal', 'less', 'less_or_equal', 'greater', 'greater_or_equal',
@@ -169,7 +169,7 @@ abstract class WherePartialParser
      *
      * @return bool
      */
-    final private static function queryBuilderOperator_UsesArray(string $operator): bool
+    private static function queryBuilderOperator_UsesArray(string $operator): bool
     {
         return in_array($operator, ['in', 'not_in']);
     }
@@ -179,7 +179,7 @@ abstract class WherePartialParser
      *
      * @return bool
      */
-    final private static function queryBuilderOperator_UsesArrayOfTwo(string $operator): bool
+    private static function queryBuilderOperator_UsesArrayOfTwo(string $operator): bool
     {
         return in_array($operator, ['between', 'not_between']);
     }
@@ -189,7 +189,7 @@ abstract class WherePartialParser
      *
      * @return bool
      */
-    final private static function queryBuilderOperator_UsesNull(string $operator): bool
+    private static function queryBuilderOperator_UsesNull(string $operator): bool
     {
         return in_array($operator, ['is_empty', 'is_not_empty', 'is_null', 'is_not_null']);
     }
@@ -199,7 +199,7 @@ abstract class WherePartialParser
      *
      * @return string
      */
-    final private static function queryBuilderOperatorToDoctrineOperator(string $queryBuilderOperator): string
+    private static function queryBuilderOperatorToDoctrineOperator(string $queryBuilderOperator): string
     {
         $dictionary = [
             'equal' => '=',
@@ -239,7 +239,7 @@ abstract class WherePartialParser
      *
      * @see http://doctrine.readthedocs.io/en/latest/en/manual/dql-doctrine-query-language.html#like-expressions
      */
-    final private static function transformValueAccordingToQueryBuilderOperator(string $queryBuilderOperator, $value)
+    private static function transformValueAccordingToQueryBuilderOperator(string $queryBuilderOperator, $value)
     {
         if (!is_string($value)) {
             return $value;
@@ -265,7 +265,7 @@ abstract class WherePartialParser
      *
      * @return string
      */
-    final private static function queryBuilderFieldToWhereAlias(string $queryBuilderField): string
+    private static function queryBuilderFieldToWhereAlias(string $queryBuilderField): string
     {
         $dictionary = static::$queryBuilderFieldsToWhereAlias;
 

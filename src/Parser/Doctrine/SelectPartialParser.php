@@ -6,7 +6,7 @@ abstract class SelectPartialParser
 {
     const OBJECT_WORD = 'object';
 
-    final private function __construct()
+    private function __construct()
     {
     }
 
